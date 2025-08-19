@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "UpdProductPerformance.DataStage sequence",
+    "asset_id" : "f19ddfab-57bf-4cae-9425-00f53e537ae3",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "f1076c90-0a2a-4892-be3d-5e3ac1eb1fa3",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "orchestration_flow",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdProductPerformance"
+    }
+  }
+}

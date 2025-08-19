@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "UpdDimSupplier.DataStage sequence",
+    "asset_id" : "168201f5-7971-4d9b-a1ae-4d3ea6529762",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "0af5ff9a-032f-4973-9bd4-f47fe05eb7f4",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "orchestration_flow",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdDimSupplier"
+    }
+  }
+}

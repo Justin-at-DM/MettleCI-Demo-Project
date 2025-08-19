@@ -1,0 +1,36 @@
+{
+  "metadata" : {
+    "name" : "TxFactFinanceDs.DataStage job",
+    "asset_id" : "4972ec46-42b4-43ef-b918-9bc83f626e58",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "a418427a-fd30-476b-a10f-f04b8cf4e246",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_id" : "8be0c5ac-3df5-438d-ace0-145bd7fbe461",
+        "env_type" : "datastage",
+        "flow_limits" : {
+          "warn_limit" : "100"
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "job_parameters" : [ ],
+      "last_run_status" : "deprecated field",
+      "retention_policy" : { },
+      "data_assets_array" : [ ],
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "TxFactFinanceDs"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "name" : "TxQuarterlyFinancialsDs.DataStage job",
+    "asset_id" : "1277f815-c2bb-44aa-9632-0d1449e40261",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "79bf5ed2-43c8-4f59-ac88-e4f801cf547b",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "data_intg_flow",
+        "flow_limits" : {
+          "warn_limit" : "100"
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "TxQuarterlyFinancialsDs"
+    }
+  }
+}

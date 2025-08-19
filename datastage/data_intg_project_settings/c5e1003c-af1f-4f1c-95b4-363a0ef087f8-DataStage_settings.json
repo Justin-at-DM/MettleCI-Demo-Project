@@ -1,0 +1,56 @@
+{
+  "project" : {
+    "jobNameSuffix" : ".DataStage job",
+    "runEnvironmentId" : "",
+    "runPriorityQueue" : "Medium",
+    "runRemoteEngineEnforcement" : false,
+    "testDataProperties" : {
+      "testCaseJobNameSuffix" : ".DataStageTestCase Job",
+      "testDataConnectionType" : "Generic S3"
+    },
+    "saveFrequency" : "save_changes_automatically",
+    "formatTimeString" : "%hh:%nn:%ss",
+    "flowLimits" : {
+      "warnLimit" : 100
+    },
+    "testDataConnectionId" : "b18238d4-3474-41d1-b3e0-b54cf13a0b33",
+    "nlsCollate" : "OFF",
+    "disableParamsRefreshCache" : false,
+    "runMessageHandlerId" : "",
+    "formatDecimalSeparator" : ".",
+    "testDataBasePath" : "",
+    "sequenceNameSuffix" : ".DataStage sequence",
+    "defineParameters" : false,
+    "optimizedSequenceNameSuffix" : ".DataStage sequence job",
+    "runArtifactRetention" : {
+      "enabled" : false
+    },
+    "gitIntegration" : {
+      "enableGit" : true,
+      "gitProvider" : "git",
+      "gitFolder" : "datastage",
+      "gitToken" : "{dsnextenc}zDgn0vWk57L6S20IcbL7KekNwi+2NTreMtKY7vGS5BpGta3JGrlRcjtsuMEa9gQD",
+      "gitOwner" : "",
+      "gitURL" : "https://github.com/Justin-at-DM/MettleCI-Demo-Project.git",
+      "gitBranch" : "main"
+    },
+    "thresholdLimits" : { },
+    "formatDateString" : "%yyyy-%mm-%dd",
+    "metricsRepository" : {
+      "enableMetrics" : false,
+      "metricsRetention" : {
+        "enabled" : false
+      },
+      "connection" : {
+        "datasource_type" : "e1c23729-99d8-4407-b3df-336e33ffdc82",
+        "properties" : {
+          "query_timeout" : "300",
+          "retry_limit" : "2"
+        }
+      },
+      "enableAdvancedFind" : false
+    },
+    "nlsMap" : "UTF-8",
+    "formatTimestampString" : "%yyyy-%mm-%dd %hh:%nn:%ss"
+  }
+}

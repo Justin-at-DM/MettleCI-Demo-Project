@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "UpdateAllSurrogateKeys.DataStage sequence",
+    "asset_id" : "a19cbbe6-e1c9-4490-a86a-f027b020e18e",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "1e59aaff-7679-4b12-9034-9b887ee9c5f6",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "orchestration_flow",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdateAllSurrogateKeys"
+    }
+  }
+}

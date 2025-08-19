@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "UpdRegionSalesSummary.DataStage sequence",
+    "asset_id" : "6a6a0dbd-0c4c-4d0d-8646-2af13f98e5d8",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "5f49d79a-7d34-425d-8d2c-d55efccef6d5",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "orchestration_flow",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdRegionSalesSummary"
+    }
+  }
+}

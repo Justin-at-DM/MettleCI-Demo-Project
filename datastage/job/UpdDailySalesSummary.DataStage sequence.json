@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "UpdDailySalesSummary.DataStage sequence",
+    "asset_id" : "6aa2cd8d-0439-49a9-ae4c-b45e6b54e1a1",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "4d5e81b8-c2b3-4cd9-a8c0-cab58aaa0c0f",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "orchestration_flow",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdDailySalesSummary"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "name" : "UpdateSalesSurrogateKeys.DataStage job",
+    "asset_id" : "8c457510-116a-4b66-85a8-0b3c3868e37e",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "76a50ac2-4d2a-48c0-8ab9-606ddc94d3c6",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "data_intg_flow",
+        "flow_limits" : {
+          "warn_limit" : "100"
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdateSalesSurrogateKeys"
+    }
+  }
+}

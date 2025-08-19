@@ -1,0 +1,510 @@
+{
+  "primary_pipeline" : "05f36f49-e044-4a36-93b3-f1da1d026b11",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "4d37d513-0299-4bf6-8909-01f4ae22167e",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "17fc0ecb-3b59-42a0-a5b6-e7d9fae5dcd9"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "reject_from_link" : -1,
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "reject_threshold" : 0,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "5ec076ed-6d82-4e8a-8820-6b5d8823001e"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "factsales",
+          "session.isolation_level" : "read_uncommitted",
+          "transaction.end_of_wave" : "none",
+          "session.autocommit_mode" : "off",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "sql.select_statement.read_statement_from_file" : false,
+          "sql.select_statement.where_clause" : "(datekey >= #datekey_start# AND datekey <= #datekey_end#)",
+          "sql.select_statement.columns.column" : "datekey,datekey,factsales",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "sql.select_statement" : "select datekey, productkey, quantitysold, salesamount\nfrom factsales\nwhere \ndatekey >= #datekey_start# and datekey <= #datekey_end#",
+          "session.array_size" : 2000,
+          "sql.enable_partitioning" : false,
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "48648bec-d069-4d2c-971e-e7b2cf839796",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 96.0,
+          "label" : "odbcFactsales",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "a635362d-fe31-4042-8229-925e64355fa0",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "b3f57722-5d74-4df7-bb7a-f12f533f9c67"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "Sum(factsales.salesamount)",
+            "columnName" : "totalsalesamount",
+            "sourceColumn" : "factsales.salesamount"
+          }, {
+            "parsedExpression" : "Sum(factsales.quantitysold)",
+            "columnName" : "totalquantitysold",
+            "sourceColumn" : "factsales.quantitysold"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "e988cc28-4924-46ea-a5b4-ac6f7a689f4e"
+      } ],
+      "op" : "PxAggregator",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "48648bec-d069-4d2c-971e-e7b2cf839796",
+          "type_attr" : "PRIMARY",
+          "id" : "17fc0ecb-3b59-42a0-a5b6-e7d9fae5dcd9",
+          "link_name" : "factsales",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "factsales",
+                "label" : "factsales",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "4d37d513-0299-4bf6-8909-01f4ae22167e"
+        } ],
+        "id" : "ab444415-725d-404f-8bd2-2a51c8b3d219",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "5ec076ed-6d82-4e8a-8820-6b5d8823001e"
+      } ],
+      "id" : "b38025ba-da07-4af4-9414-25bdd4680d52",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxAggregator.svg",
+          "x_pos" : 384.0,
+          "label" : "agFactsales",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "datekey"
+        }, {
+          "key" : "productkey"
+        } ],
+        "method" : "hash",
+        "selection" : "reduce",
+        "output_count" : 1,
+        "nul_res" : " ",
+        "input_count" : 1,
+        "allow_column_mapping" : false,
+        "reduceProperties" : [ [ {
+          "reduce" : "quantitysold"
+        }, {
+          "sum" : "totalquantitysold"
+        } ], [ {
+          "reduce" : "salesamount"
+        }, {
+          "sum" : "totalsalesamount",
+          "decimal" : "15,2"
+        } ] ]
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "b38025ba-da07-4af4-9414-25bdd4680d52",
+          "type_attr" : "PRIMARY",
+          "id" : "b3f57722-5d74-4df7-bb7a-f12f533f9c67",
+          "link_name" : "dailysummary",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "dailysummary",
+                "label" : "dailysummary",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "a635362d-fe31-4042-8229-925e64355fa0"
+        } ],
+        "id" : "fd8a30a7-c6aa-46f2-9405-0e6ce033544b",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "datasetmode" : ">| [ds",
+          "part_type" : "same",
+          "part_coll" : "part_type",
+          "dataset" : "#psGlobal.ReportDir#/dailysalessummary.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        },
+        "schema_ref" : "e988cc28-4924-46ea-a5b4-ac6f7a689f4e"
+      } ],
+      "id" : "85ab8d3d-d19a-4629-bc54-d94a7954bf11",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 648.0,
+          "label" : "dsDailysummaryds",
+          "y_pos" : 96.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "Prepare data for load to Daily Sales Summary table",
+    "id" : "05f36f49-e044-4a36-93b3-f1da1d026b11",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "617b8b44-0c84-4428-9130-15ce3afee83a",
+    "name" : "psGlobal"
+  }, {
+    "ref" : "f0949666-9201-46d6-9a42-c73e385e63f7",
+    "name" : "psDatabaseConnect"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "5ec076ed-6d82-4e8a-8820-6b5d8823001e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "productkey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "productkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "salesamount",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "salesamount",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "quantitysold",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "quantitysold",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "e988cc28-4924-46ea-a5b4-ac6f7a689f4e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "factsales.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "factsales.productkey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "productkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "productkey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "totalsalesamount",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "totalsalesamount",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "totalquantitysold",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "totalquantitysold",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "cb6c5814-c4a6-4e44-8335-2ced0b8ba4ac",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "datekey_start",
+      "type" : "int64",
+      "prompt" : "start date",
+      "value" : "20230101"
+    }, {
+      "name" : "datekey_end",
+      "type" : "int64",
+      "prompt" : "end date",
+      "value" : "20240831"
+    }, {
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string"
+    }, {
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : "50000"
+    }, {
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string"
+    } ]
+  }
+}

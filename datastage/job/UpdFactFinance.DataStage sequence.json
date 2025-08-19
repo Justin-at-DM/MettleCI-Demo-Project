@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "UpdFactFinance.DataStage sequence",
+    "asset_id" : "8e4a51a0-8765-4206-8522-5513969b3d37",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "82f9e933-ec95-49e2-81eb-2093614190db",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "orchestration_flow",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdFactFinance"
+    }
+  }
+}
