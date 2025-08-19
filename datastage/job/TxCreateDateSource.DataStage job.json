@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "name" : "TxCreateDateSource.DataStage job",
+    "asset_id" : "31987416-68a1-448b-8d24-45a5a01fd0c5",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "6ab8d6df-848d-40c8-bd27-76b290cd4a09",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "data_intg_flow",
+        "flow_limits" : {
+          "warn_limit" : "100"
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "TxCreateDateSource"
+    }
+  }
+}

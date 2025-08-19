@@ -1,0 +1,226 @@
+{
+  "primary_pipeline" : "1fa97187-2794-4279-94b7-cc64e42821b7",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "09a8123b-1a90-4fe3-86d3-62ad428fe2d1",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "b487b4b9-dda9-4c82-963a-856fcd51c876"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "reject_from_link" : -1,
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "reject_threshold" : 0,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "a8d8dd60-ff1c-4451-a243-75b211bb3333"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "read_uncommitted",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "session.array_size" : 2000,
+          "table_name" : "factfinance",
+          "sql.enable_partitioning" : false,
+          "session.autocommit_mode" : "off",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "ff87aac7-3a99-4bf2-af17-d0f5c1c6f68a",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 120.0,
+          "label" : "odbcFactfinance",
+          "y_pos" : 120.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ff87aac7-3a99-4bf2-af17-d0f5c1c6f68a",
+          "type_attr" : "PRIMARY",
+          "id" : "b487b4b9-dda9-4c82-963a-856fcd51c876",
+          "link_name" : "factfinance",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "factfinance",
+                "label" : "factfinance",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "09a8123b-1a90-4fe3-86d3-62ad428fe2d1"
+        } ],
+        "id" : "f72d1326-5215-4164-a3bf-656e072b146d",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "a8d8dd60-ff1c-4451-a243-75b211bb3333"
+      } ],
+      "id" : "55f00df6-74d9-44d9-b8dd-729c9df82f3b",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 360.0,
+          "label" : "skFactfinance",
+          "y_pos" : 120.0
+        }
+      },
+      "parameters" : {
+        "update_action" : "admin create",
+        "sk_id" : "#psGlobal.LandingDir#/skfactfinance",
+        "num-outputs" : 0,
+        "output_count" : 0,
+        "keysourcetype" : "file",
+        "input_count" : 1,
+        "input_key" : "financekey",
+        "num-inputs" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "Create/Update surrogate key files from PostgreSQL dimension and fact tables",
+    "id" : "1fa97187-2794-4279-94b7-cc64e42821b7",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+    "name" : "psDatabaseConnect"
+  }, {
+    "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+    "name" : "psGlobal"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "a8d8dd60-ff1c-4451-a243-75b211bb3333",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "financekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "sale_key",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-warehousedemo-WarehouseDemo.dbo.fact_sales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "2b9f12aa-f54b-4cf7-b03d-11650c4c2ec8",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string"
+    }, {
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : "50000"
+    }, {
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string"
+    } ]
+  }
+}

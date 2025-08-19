@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "name" : "ScdDimSupplierDs.DataStage job",
+    "asset_id" : "68fa8777-e89a-4ce6-9ed9-518723672db6",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "0da25228-59a6-4f8c-9678-fc3fd5e0cf3b",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "data_intg_flow",
+        "flow_limits" : {
+          "warn_limit" : "100"
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "ScdDimSupplierDs"
+    }
+  }
+}

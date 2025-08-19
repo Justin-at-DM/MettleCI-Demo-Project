@@ -1,0 +1,466 @@
+{
+  "primary_pipeline" : "02906275-81ae-4bcb-8fab-7b3b54d1713b",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "d440d4a3-ea88-4eb0-94e9-525f6463dede",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "9fb3944b-879b-4637-ab96-a93d86e46811"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "missingcolmode" : " ",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "dataset" : "#psGlobal.ReportDir#/dailysalessummary.ds"
+        },
+        "schema_ref" : "ffe32505-7bd5-4d54-826a-4824bf01c191"
+      } ],
+      "op" : "PxDataSet",
+      "id" : "06d34a7a-ebb8-48e3-9c27-987ad6fc0adf",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 120.0,
+          "label" : "dsDailysalessummaryds",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "2fa7631c-dfb1-4355-9b78-f98d133147be",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "a7c6a19a-4f8a-4dc5-8589-52613fb70ef2"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "dada6538-c18c-4625-86a0-585daf57e640"
+      } ],
+      "op" : "PxCopy",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "06d34a7a-ebb8-48e3-9c27-987ad6fc0adf",
+          "type_attr" : "PRIMARY",
+          "id" : "9fb3944b-879b-4637-ab96-a93d86e46811",
+          "link_name" : "dailysalessummaryds",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "dailysalessummaryds",
+                "label" : "dailysalessummaryds",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "d440d4a3-ea88-4eb0-94e9-525f6463dede"
+        } ],
+        "id" : "a8a9590f-1d5c-4853-9328-0ff09b06a2cb",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "ffe32505-7bd5-4d54-826a-4824bf01c191"
+      } ],
+      "id" : "0d8bcc09-51e0-4dde-a1fc-d5c67a49526f",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCopy.svg",
+          "x_pos" : 336.0,
+          "label" : "cpDailysalessummary",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 1,
+        "force" : " ",
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "ODBCConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "0d8bcc09-51e0-4dde-a1fc-d5c67a49526f",
+          "type_attr" : "PRIMARY",
+          "id" : "a7c6a19a-4f8a-4dc5-8589-52613fb70ef2",
+          "link_name" : "dailysalessummary",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "dailysalessummary",
+                "label" : "dailysalessummary",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "2fa7631c-dfb1-4355-9b78-f98d133147be"
+        } ],
+        "id" : "1d87c299-8fd0-4989-bb59-2494a0ca6612",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "dada6538-c18c-4625-86a0-585daf57e640"
+      } ],
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "read_uncommitted",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "session.array_size" : 1,
+          "table_name" : "dailysalessummary",
+          "session.schema_reconciliation.drop_unmatched_fields" : true,
+          "session.autocommit_mode" : "off",
+          "session.fail_on_row_error_px" : true,
+          "logging.log_column_values" : false,
+          "write_mode" : "insert_then_update",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "08205a32-b989-4f92-be4d-82837cc23790",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 576.0,
+          "label" : "odbcDailysalessummary",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "Load Daily Sales Summary table on PostgreSQL",
+    "id" : "02906275-81ae-4bcb-8fab-7b3b54d1713b",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+    "name" : "psGlobal"
+  }, {
+    "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+    "name" : "psDatabaseConnect"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "ffe32505-7bd5-4d54-826a-4824bf01c191",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "productkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "productkey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "totalsalesamount",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "totalsalesamount",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "totalquantitysold",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "totalquantitysold",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "dada6538-c18c-4625-86a0-585daf57e640",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "dailysalessummaryds.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "dailysalessummaryds.productkey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "productkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "productkey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "dailysalessummaryds.totalsalesamount",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "totalsalesamount",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "totalsalesamount",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "dailysalessummaryds.totalquantitysold",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "totalquantitysold",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "totalquantitysold",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dailysalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "0f3f8629-547b-4697-9fa1-6fc27dd4c62b",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string"
+    }, {
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : "50000"
+    }, {
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string"
+    } ]
+  }
+}

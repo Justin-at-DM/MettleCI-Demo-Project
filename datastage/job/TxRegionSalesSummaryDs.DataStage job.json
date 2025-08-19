@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "name" : "TxRegionSalesSummaryDs.DataStage job",
+    "asset_id" : "c780cb68-897e-40b9-b1ae-8f848d83889e",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "654ec764-1426-482f-817b-48249972763e",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "data_intg_flow",
+        "flow_limits" : {
+          "warn_limit" : "100"
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "TxRegionSalesSummaryDs"
+    }
+  }
+}

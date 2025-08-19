@@ -1,0 +1,225 @@
+{
+  "primary_pipeline" : "17d16167-b2df-44e0-90a8-fcf81e699ea5",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "7cef4474-3a9e-4990-a656-8d08a38416a2",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "23aa9336-9a09-4c13-9ba6-f37acc8ad9d0"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "reject_from_link" : -1,
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "reject_threshold" : 0,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "05feb663-7f99-438a-a2eb-6b4cf74b9e1b"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "read_uncommitted",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "session.array_size" : 2000,
+          "table_name" : "factsales",
+          "sql.enable_partitioning" : false,
+          "session.autocommit_mode" : "off",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "2b150223-0301-4bb7-9628-fcb94112aea1",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 264.0,
+          "label" : "odbcFactsales",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "2b150223-0301-4bb7-9628-fcb94112aea1",
+          "type_attr" : "PRIMARY",
+          "id" : "23aa9336-9a09-4c13-9ba6-f37acc8ad9d0",
+          "link_name" : "factsales",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "factsales",
+                "label" : "factsales",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "7cef4474-3a9e-4990-a656-8d08a38416a2"
+        } ],
+        "id" : "0d52d9a1-19af-4604-adf0-bf425c65d104",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "05feb663-7f99-438a-a2eb-6b4cf74b9e1b"
+      } ],
+      "id" : "64ddfa3d-fe56-40c2-852d-89b0e58ba9de",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 504.0,
+          "label" : "skFactsales",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "update_action" : "admin create",
+        "sk_id" : "#psGlobal.LandingDir#/skfactsales",
+        "num-outputs" : 0,
+        "output_count" : 0,
+        "keysourcetype" : "file",
+        "input_count" : 1,
+        "input_key" : "saleskey",
+        "num-inputs" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "17d16167-b2df-44e0-90a8-fcf81e699ea5",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+    "name" : "psDatabaseConnect"
+  }, {
+    "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+    "name" : "psGlobal"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "05feb663-7f99-438a-a2eb-6b4cf74b9e1b",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "saleskey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "sale_key",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-warehousedemo-WarehouseDemo.dbo.fact_sales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "b091c4e2-2b0f-4dc2-95d6-ca3f0e4af7fa",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string"
+    }, {
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : "50000"
+    }, {
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string"
+    } ]
+  }
+}

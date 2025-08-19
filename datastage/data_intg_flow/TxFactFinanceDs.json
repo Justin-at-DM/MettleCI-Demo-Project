@@ -1,0 +1,1383 @@
+{
+  "primary_pipeline" : "361bcbd2-4efc-4e0a-943a-58ed10d48f8d",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "9ce4e311-2409-4b6f-9bff-48a3a0d7b50f",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "78f4c323-3a98-4c51-932a-1e8d9cfb1be5"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "1b14c4fa-021d-4015-b8f8-93772ebe0e29",
+        "parameters" : {
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "buf_mode" : "default",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        }
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "6dc91708-9d35-4b0c-887d-871d35a4fb10",
+        "project_ref" : "c5e1003c-af1f-4f1c-95b4-363a0ef087f8",
+        "properties" : {
+          "currentOutputLinkType" : "PRIMARY",
+          "session.isolation_level" : "read_uncommitted",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "outputAcpShouldHide" : true,
+          "enableFlowAcpControl" : true,
+          "enableSchemalessDesign" : false,
+          "sql.select_statement" : "select saleskey,f.salesid,datekey\nfrom factsales f\njoin stgfinance s\non f.salesid = s.salesid",
+          "session.array_size" : 2000,
+          "sql.enable_partitioning" : false,
+          "session.autocommit_mode" : "off",
+          "node_number" : 0,
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "session.code_page" : "default",
+          "before_after" : false,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "node_count" : 1,
+          "enable_quoted_i_ds" : false,
+          "sql.select_statement.read_statement_from_file" : false
+        },
+        "name" : "Postgres-Demo"
+      },
+      "id" : "1a145bd1-2bd7-413c-8475-8e007b23f16d",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "odbcFactsales",
+          "y_pos" : 237.6
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par",
+        "preserve" : -3,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "ffafbb4e-c28a-409d-bb55-4fce114a1484",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "5896c7bf-bbb6-4fb4-aae6-975e48d6e986"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "533f3804-b31b-4aa1-8b46-6f2111c8f69a",
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        }
+      } ],
+      "op" : "PxJoin",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ae4abd24-4908-45a7-9f89-3169304e6e56",
+          "type_attr" : "PRIMARY",
+          "id" : "41c5911d-2417-404e-841b-6b3a354c20f8",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_single_line" : true,
+                "label_align" : "center",
+                "tooltip" : "stgfinanace",
+                "x_pos" : 0,
+                "label" : "stgfinanace",
+                "label_allow_return_key" : "save",
+                "width" : 122,
+                "label_editable" : true,
+                "id" : "dec-8",
+                "position" : "middle",
+                "y_pos" : -20,
+                "height" : 20
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "stgfinanace",
+          "port_id_ref" : "13957cb6-1756-4d15-a324-42d3d298ebe6"
+        } ],
+        "id" : "92877cf0-dac5-4584-86c4-d6143463981a",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "schema_ref" : "36dc7b26-12f6-496a-9fe9-283ac2b1ef72",
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        }
+      }, {
+        "links" : [ {
+          "node_id_ref" : "1a145bd1-2bd7-413c-8475-8e007b23f16d",
+          "type_attr" : "PRIMARY",
+          "id" : "78f4c323-3a98-4c51-932a-1e8d9cfb1be5",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_single_line" : true,
+                "label_align" : "center",
+                "tooltip" : "factsales",
+                "x_pos" : 0,
+                "label" : "factsales",
+                "label_allow_return_key" : "save",
+                "width" : 130,
+                "label_editable" : true,
+                "id" : "dec-8",
+                "position" : "middle",
+                "y_pos" : -20,
+                "height" : 20
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "factsales",
+          "port_id_ref" : "9ce4e311-2409-4b6f-9bff-48a3a0d7b50f"
+        } ],
+        "id" : "97537e0d-8e46-4f72-a1f8-b7b4cd9b4d38",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "schema_ref" : "1b14c4fa-021d-4015-b8f8-93772ebe0e29",
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "ca251f6c-7aab-4042-a3db-ea2920d26b3f",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "92877cf0-dac5-4584-86c4-d6143463981a|97537e0d-8e46-4f72-a1f8-b7b4cd9b4d38",
+          "outputs_order" : "ffafbb4e-c28a-409d-bb55-4fce114a1484"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxJoin.svg",
+          "x_pos" : 285.12,
+          "label" : "jiSalesid",
+          "y_pos" : 174.24
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "salesid"
+        } ],
+        "output_count" : 1,
+        "input_count" : 2,
+        "allow_column_mapping" : false,
+        "operator" : "innerjoin"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "13957cb6-1756-4d15-a324-42d3d298ebe6",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "41c5911d-2417-404e-841b-6b3a354c20f8"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "36dc7b26-12f6-496a-9fe9-283ac2b1ef72",
+        "parameters" : {
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "buf_mode" : "default",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        }
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "6dc91708-9d35-4b0c-887d-871d35a4fb10",
+        "project_ref" : "c5e1003c-af1f-4f1c-95b4-363a0ef087f8",
+        "properties" : {
+          "currentOutputLinkType" : "PRIMARY",
+          "sql.select_statement.tables.table" : "stgfinance",
+          "session.isolation_level" : "read_uncommitted",
+          "sql.select_statement.columns.column" : "transactionid,transactionid,stgfinance",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "outputAcpShouldHide" : true,
+          "enableFlowAcpControl" : true,
+          "enableSchemalessDesign" : false,
+          "sql.select_statement" : "select transactionid, salesid, revenue, cost, currency\nfrom stgfinance",
+          "session.array_size" : 2000,
+          "sql.enable_partitioning" : false,
+          "session.autocommit_mode" : "off",
+          "node_number" : 0,
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "session.code_page" : "default",
+          "before_after" : false,
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "node_count" : 1,
+          "enable_quoted_i_ds" : false,
+          "sql.select_statement.read_statement_from_file" : false
+        },
+        "name" : "Postgres-Demo"
+      },
+      "id" : "ae4abd24-4908-45a7-9f89-3169304e6e56",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 47.519999999999996,
+          "label" : "odbcStgfinance",
+          "y_pos" : 47.519999999999996
+        }
+      },
+      "parameters" : {
+        "combinability" : "auto",
+        "output_count" : 1,
+        "input_count" : 0,
+        "execmode" : "default_par",
+        "preserve" : -3,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "5cad40e9-2156-4437-89f4-4d6548a52b9e",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "2165d0aa-13a9-4404-a831-a2f274503848"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          }
+        },
+        "schema_ref" : "4f1a178c-3932-46c4-a71c-a37fa7d167a8",
+        "parameters" : {
+          "Reject" : false,
+          "outputName" : "factfinance",
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "svProfit",
+            "stageVars" : "svProfit",
+            "columnName" : "profit"
+          }, {
+            "parsedExpression" : "DFloatToDecimal(svProfitPercentage,'round_inf')",
+            "stageVars" : "svProfitPercentage",
+            "columnName" : "profitpercentage"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        }
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ca251f6c-7aab-4042-a3db-ea2920d26b3f",
+          "type_attr" : "PRIMARY",
+          "id" : "5896c7bf-bbb6-4fb4-aae6-975e48d6e986",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_single_line" : true,
+                "label_align" : "center",
+                "tooltip" : "finance_sales",
+                "x_pos" : 0,
+                "label" : "finance_sales",
+                "label_allow_return_key" : "save",
+                "width" : 116,
+                "label_editable" : true,
+                "id" : "dec-8",
+                "position" : "middle",
+                "y_pos" : -20,
+                "height" : 20
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "finance_sales",
+          "port_id_ref" : "ffafbb4e-c28a-409d-bb55-4fce114a1484"
+        } ],
+        "id" : "51baa51d-ca46-4f82-804f-a11ec9ff40ff",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "533f3804-b31b-4aa1-8b46-6f2111c8f69a",
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "ae9a391d-4f19-4840-a396-e583844a8791",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "51baa51d-ca46-4f82-804f-a11ec9ff40ff",
+          "outputs_order" : "5cad40e9-2156-4437-89f4-4d6548a52b9e"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 506.88,
+          "label" : "txProfit",
+          "y_pos" : 174.24
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "OutputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "factfinance"
+        }, {
+          "link_label" : "1",
+          "link_name" : "Link_3"
+        } ],
+        "SurKeyStateFile" : "#psGlobal.LandingDir#/skfactfinance",
+        "InputlinkOrderingList" : [ {
+          "link_label" : "0",
+          "link_name" : "finance_sales"
+        } ],
+        "output_count" : 2,
+        "BlockSizeSelectedType" : "systemSelected",
+        "StageVariables" : [ {
+          "Precision" : 10,
+          "Derivation" : "finance_sales.revenue - finance_sales.cost",
+          "SqlType" : "NUMERIC",
+          "Scale" : 2,
+          "Name" : "svProfit"
+        }, {
+          "Precision" : 5,
+          "Derivation" : "svProfit / finance_sales.revenue",
+          "SqlType" : "DOUBLE",
+          "Scale" : 4,
+          "Name" : "svProfitPercentage"
+        } ],
+        "input_count" : 1,
+        "InitialValue" : "1",
+        "BlockSize" : 0,
+        "SKKeySourceType" : "file"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "ae9a391d-4f19-4840-a396-e583844a8791",
+          "type_attr" : "PRIMARY",
+          "id" : "2165d0aa-13a9-4404-a831-a2f274503848",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_single_line" : true,
+                "label_align" : "center",
+                "tooltip" : "factfinance",
+                "x_pos" : 0,
+                "label" : "factfinance",
+                "label_allow_return_key" : "save",
+                "width" : 105,
+                "label_editable" : true,
+                "id" : "dec-8",
+                "position" : "middle",
+                "y_pos" : -20,
+                "height" : 20
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "factfinance",
+          "port_id_ref" : "5cad40e9-2156-4437-89f4-4d6548a52b9e"
+        } ],
+        "id" : "e417351f-5f29-4aa3-9278-a5fc940fc50e",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "4f1a178c-3932-46c4-a71c-a37fa7d167a8",
+        "parameters" : {
+          "datasetmode" : ">| [ds",
+          "dataAssetName" : "#psGlobal.DatasetDir#/factfinance.ds",
+          "part_coll" : "part_type",
+          "dataset" : "#psGlobal.DatasetDir#/factfinance.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        }
+      } ],
+      "id" : "ad717f1c-d333-4cb8-916d-05107c82db7c",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 712.8,
+          "label" : "dsFactfinanceds",
+          "y_pos" : 174.24
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "Short description: Prepare data for load to Finance fact table. Long description: reset instructions:\r\n\r\nset odbc stage name to odbc_Stgfinance                                                           [odbcStgfinance]\r\nset dsFactfinanceds  to Auto                                                                               [Same]\r\nset dataset path  to  /data/ww2/dataset/factfinance.ds                                     [#psGlobal.DatasetDir#/factfinance.ds#]\r\n\r\ntxProfit set profitperecentage derivation from &amp;amp;amp;amp;amp;amp;#39;round_inf&amp;amp;amp;amp;amp;amp;#39;                                      [&amp;amp;amp;amp;amp;amp;#39;floor&amp;amp;amp;amp;amp;amp;#39;]\r\n\r\n",
+    "id" : "361bcbd2-4efc-4e0a-943a-58ed10d48f8d",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "",
+        "runtime_column_propagation" : "false",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+    "name" : "psDatabaseConnect"
+  }, {
+    "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+    "name" : "psGlobal"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "1b14c4fa-021d-4015-b8f8-93772ebe0e29",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "saleskey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "saleskey",
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "salesid",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "salesid",
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "533f3804-b31b-4aa1-8b46-6f2111c8f69a",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "stgfinanace.transactionid",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "transactionid",
+      "type" : "integer",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "stgfinanace.revenue",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "revenue",
+      "type" : "double",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "stgfinanace.cost",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "cost",
+      "type" : "double",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "stgfinanace.currency",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "currency",
+      "type" : "string",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "factsales.saleskey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "saleskey",
+      "type" : "integer",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "factsales.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "stgfinanace.salesid",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "salesid",
+      "type" : "integer",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  }, {
+    "id" : "36dc7b26-12f6-496a-9fe9-283ac2b1ef72",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "transactionid",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "transactionid",
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.stgfinance",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "salesid",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "salesid",
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.stgfinance",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "revenue",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "revenue",
+        "time_scale" : 0,
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.stgfinance",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "cost",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "cost",
+        "time_scale" : 0,
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.stgfinance",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "currency",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "currency",
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.stgfinance",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "4f1a178c-3932-46c4-a71c-a37fa7d167a8",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "finance_sales.transactionid",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "transactionid",
+      "type" : "integer",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "finance_sales.saleskey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "saleskey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "saleskey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factfinance",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "finance_sales.revenue",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "revenue",
+      "type" : "double",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "finance_sales.cost",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "cost",
+      "type" : "double",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "profit",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "profit",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factfinance",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "finance_sales.currency",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "currency",
+      "type" : "string",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "finance_sales.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 4,
+        "decimal_precision" : 5,
+        "max_length" : 5,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "profitpercentage",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "NUMERIC",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "fc30a7ad-17ab-45a0-8679-4b834d71fc47",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "",
+      "decimal_separator" : "",
+      "parameterSetListRuntime" : [ {
+        "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+        "project_ref" : "c5e1003c-af1f-4f1c-95b4-363a0ef087f8",
+        "name" : "psDatabaseConnect",
+        "parameter_set" : {
+          "value_sets" : [ {
+            "values" : [ {
+              "name" : "DATASRC",
+              "value" : "postgreSQL"
+            }, {
+              "name" : "USERID",
+              "value" : "datastage_user"
+            }, {
+              "name" : "PASSWORD",
+              "value" : "datastage"
+            } ],
+            "name" : "postgresSQL_demo"
+          }, {
+            "values" : [ {
+              "name" : "DATASRC",
+              "value" : "postgreSQL"
+            }, {
+              "name" : "USERID",
+              "value" : "datastage_dev_user"
+            }, {
+              "name" : "PASSWORD",
+              "value" : "datastage"
+            } ],
+            "name" : "postgreSQL_dev"
+          } ],
+          "name" : "psDatabaseConnect",
+          "description" : "",
+          "parameters" : [ {
+            "name" : "DATASRC",
+            "type" : "string",
+            "prompt" : "Data Source Name",
+            "value" : ""
+          }, {
+            "name" : "USERID",
+            "type" : "string",
+            "prompt" : "User Name",
+            "value" : ""
+          }, {
+            "name" : "PASSWORD",
+            "type" : "string",
+            "prompt" : "Password",
+            "value" : ""
+          } ]
+        },
+        "referenced_by" : [ "TxFactFinanceDs" ]
+      }, {
+        "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+        "project_ref" : "c5e1003c-af1f-4f1c-95b4-363a0ef087f8",
+        "name" : "psGlobal",
+        "parameter_set" : {
+          "value_sets" : [ {
+            "values" : [ {
+              "name" : "DatasetDir",
+              "value" : "/px-storage/Datasets/electromart"
+            }, {
+              "name" : "LandingDir",
+              "value" : "/data/electromart/file"
+            }, {
+              "name" : "StateFileDir",
+              "value" : "/data/electromart/file"
+            }, {
+              "name" : "ReportDir",
+              "value" : "/data/electromart/report"
+            }, {
+              "name" : "RejectDir",
+              "value" : "/data/electromart/reject"
+            } ],
+            "name" : "local"
+          } ],
+          "name" : "psGlobal",
+          "description" : "",
+          "parameters" : [ {
+            "subtype" : "",
+            "name" : "DatasetDir",
+            "type" : "path",
+            "prompt" : "Dataset Directory",
+            "value" : "/px-storage/Datasets/electromart"
+          }, {
+            "subtype" : "",
+            "name" : "LandingDir",
+            "type" : "path",
+            "prompt" : "Sequential File Directory",
+            "value" : "/data/electromart/file"
+          }, {
+            "subtype" : "",
+            "name" : "StateFileDir",
+            "type" : "path",
+            "prompt" : "State File Directory",
+            "value" : "/data/electromart/file"
+          }, {
+            "subtype" : "",
+            "name" : "ReportDir",
+            "type" : "path",
+            "prompt" : "Report File Directory",
+            "value" : "/data/electromart/report"
+          }, {
+            "subtype" : "",
+            "name" : "RejectDir",
+            "type" : "path",
+            "prompt" : "Reject File Directory",
+            "value" : "/data/electromart/reject"
+          } ]
+        },
+        "referenced_by" : [ "TxFactFinanceDs" ]
+      } ],
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "",
+      "runArtifactRetentionJob" : {
+        "enabled" : false
+      },
+      "valueSetSelected" : {
+        "psDatabaseConnect" : {
+          "parameterSetName" : "psDatabaseConnect",
+          "label" : "Default",
+          "id" : 0
+        },
+        "psGlobal" : {
+          "parameterSetName" : "psGlobal",
+          "label" : "local",
+          "id" : 0
+        }
+      },
+      "external_message_handlers" : [ ],
+      "date_format" : "",
+      "message_handlers" : [ ],
+      "version" : "3.0.5",
+      "localParameterListRuntime" : [ {
+        "subtype" : "",
+        "valid_values" : [ "Disabled", "Test", "Intercept" ],
+        "name" : "$DM_ENABLE_UNIT_TESTING",
+        "type" : "enum",
+        "prompt" : "Unit Testing Configuration",
+        "value" : "Disabled",
+        "referenced_by" : [ "TxFactFinanceDs" ]
+      }, {
+        "subtype" : "",
+        "name" : "ConnProp_ODBC_hostname",
+        "type" : "string",
+        "value" : "",
+        "referenced_by" : [ "TxFactFinanceDs" ]
+      }, {
+        "subtype" : "",
+        "name" : "ConnProp_ODBC_port",
+        "type" : "int64",
+        "value" : 50000,
+        "referenced_by" : [ "TxFactFinanceDs" ]
+      }, {
+        "subtype" : "",
+        "name" : "ConnProp_ODBC_database",
+        "type" : "string",
+        "value" : "",
+        "referenced_by" : [ "TxFactFinanceDs" ]
+      } ]
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : {
+        "ae9a391d-4f19-4840-a396-e583844a8791" : "finance_sales"
+      },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "subtype" : "",
+      "valid_values" : [ "Disabled", "Test", "Intercept" ],
+      "name" : "$DM_ENABLE_UNIT_TESTING",
+      "type" : "enum",
+      "prompt" : "Unit Testing Configuration",
+      "value" : "Disabled"
+    }, {
+      "subtype" : "",
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string",
+      "value" : ""
+    }, {
+      "subtype" : "",
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : 50000
+    }, {
+      "subtype" : "",
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string",
+      "value" : ""
+    } ]
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "primary_pipeline" : "392f3581-4deb-4a09-8672-ec29d041e86d",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "4ad0b5de-7b18-4dea-a185-25105aefdb6b",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "e5d4f6a9-2328-49d8-84f6-97f3d949105a"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "reject_from_link" : -1,
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "reject_threshold" : 0,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "9212c954-ad34-42fe-ab18-989f792f4c55"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "read_uncommitted",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "transaction.end_of_wave" : "none",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "session.array_size" : 2000,
+          "table_name" : "dimcustomer",
+          "sql.enable_partitioning" : false,
+          "session.autocommit_mode" : "off",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "f3552ddc-ddc2-4777-b3b1-ce7757a2e1c2",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 192.0,
+          "label" : "odbcDimcustomer",
+          "y_pos" : 120.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxSurrogateKeyGeneratorN",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "f3552ddc-ddc2-4777-b3b1-ce7757a2e1c2",
+          "type_attr" : "PRIMARY",
+          "id" : "e5d4f6a9-2328-49d8-84f6-97f3d949105a",
+          "link_name" : "customer",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "customer",
+                "label" : "customer",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "4ad0b5de-7b18-4dea-a185-25105aefdb6b"
+        } ],
+        "id" : "94057bf2-5256-483c-b30c-a63c6e7e3d74",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "9212c954-ad34-42fe-ab18-989f792f4c55"
+      } ],
+      "id" : "5b6c7343-733b-40e8-9b04-3eb00d9fcbc4",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxSurrogateKeyGeneratorN.svg",
+          "x_pos" : 432.0,
+          "label" : "skDimcustomer",
+          "y_pos" : 120.0
+        }
+      },
+      "parameters" : {
+        "update_action" : "admin create",
+        "sk_id" : "#psGlobal.LandingDir#/skdimcustomer",
+        "num-outputs" : 0,
+        "output_count" : 0,
+        "keysourcetype" : "file",
+        "input_count" : 1,
+        "input_key" : "customerkey",
+        "num-inputs" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "id" : "392f3581-4deb-4a09-8672-ec29d041e86d",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+    "name" : "psDatabaseConnect"
+  }, {
+    "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+    "name" : "psGlobal"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "9212c954-ad34-42fe-ab18-989f792f4c55",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "customerkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "customer_key",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-warehousedemo-WarehouseDemo.dbo.dim_customers",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "2ad96186-6543-4718-b2f9-cc9a7e1c3fd4",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string"
+    }, {
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : "50000"
+    }, {
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string"
+    } ]
+  }
+}

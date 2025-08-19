@@ -1,0 +1,1125 @@
+{
+  "primary_pipeline" : "ed744567-5f83-4119-8659-758cab085226",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "334c4989-79df-492f-a651-70fb42e97f00",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "b2783396-18a4-4b02-b8ed-a371ec0dc76f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "reject_from_link" : -1,
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "reject_threshold" : 0,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "2b438e5a-b7d0-430e-8f46-a0fe4086bcbc"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "dimcustomer",
+          "session.isolation_level" : "read_uncommitted",
+          "transaction.end_of_wave" : "none",
+          "session.autocommit_mode" : "off",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "sql.select_statement.read_statement_from_file" : false,
+          "sql.select_statement.where_clause" : "currentflag = 'Y'",
+          "sql.select_statement.columns.column" : "customerkey,customerkey,dimcustomer",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "sql.select_statement" : "select customerkey, state from dimcustomer\nwhere currentflag = 'Y'",
+          "session.array_size" : 2000,
+          "sql.enable_partitioning" : false,
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "f26f3b54-aa50-4281-aea6-8ef196a546b3",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 72.0,
+          "label" : "odbcDimcustomer",
+          "y_pos" : 168.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "95f93658-36ad-475a-b5a1-a8f94eece558",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "912e984c-7e19-4281-a009-def20bfa06e2"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "c396c06e-5dbd-400d-b235-e429d89846da"
+      } ],
+      "op" : "PxJoin",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "f26f3b54-aa50-4281-aea6-8ef196a546b3",
+          "type_attr" : "PRIMARY",
+          "id" : "b2783396-18a4-4b02-b8ed-a371ec0dc76f",
+          "link_name" : "state",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "state",
+                "label" : "state",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "334c4989-79df-492f-a651-70fb42e97f00"
+        } ],
+        "id" : "121a417a-e652-4c4e-b2b3-e506796e4bdb",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "2b438e5a-b7d0-430e-8f46-a0fe4086bcbc"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "7bd386a4-cef4-4b6d-8af0-ccd9ece6aa46",
+          "type_attr" : "PRIMARY",
+          "id" : "223e4061-7c46-4b57-a888-4ddcec22aa87",
+          "link_name" : "salestotal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "salestotal",
+                "label" : "salestotal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "5d629601-0e49-423c-a3ca-794d95a64712"
+        } ],
+        "id" : "6e55c7bf-f125-444d-a651-cc3f4e84afdf",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "d91154fd-8d5c-4150-9f7e-509e50096e96"
+      } ],
+      "id" : "6d3b1e22-4529-4646-9c68-6be8a0bb01ae",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "121a417a-e652-4c4e-b2b3-e506796e4bdb|6e55c7bf-f125-444d-a651-cc3f4e84afdf",
+          "outputs_order" : "95f93658-36ad-475a-b5a1-a8f94eece558"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxJoin.svg",
+          "x_pos" : 288.0,
+          "label" : "jiCustomerkey",
+          "y_pos" : 336.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "customerkey"
+        } ],
+        "output_count" : 1,
+        "input_count" : 2,
+        "allow_column_mapping" : false,
+        "operator" : "innerjoin"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "5d629601-0e49-423c-a3ca-794d95a64712",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "223e4061-7c46-4b57-a888-4ddcec22aa87"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "reject_from_link" : -1,
+          "reject_uses" : "rows",
+          "buf_free_run" : 50,
+          "reject_threshold" : 0,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "reject_number" : 0,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "d91154fd-8d5c-4150-9f7e-509e50096e96"
+      } ],
+      "op" : "ODBCConnectorPX",
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "sql.select_statement.tables.table" : "factsales",
+          "session.isolation_level" : "read_uncommitted",
+          "transaction.end_of_wave" : "none",
+          "session.autocommit_mode" : "off",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "sql.select_statement.read_statement_from_file" : false,
+          "sql.select_statement.where_clause" : "(datekey >= #datekey_start# AND datekey <= #datekey_end#)",
+          "sql.select_statement.columns.column" : "customerkey,customerkey,factsales",
+          "session.pass_lob_locator" : false,
+          "limit_rows" : false,
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "sql.select_statement" : "select customerkey, datekey, salestotal\nfrom factsales\nwhere \ndatekey >= #datekey_start# and datekey <= #datekey_end#",
+          "session.array_size" : 2000,
+          "sql.enable_partitioning" : false,
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : false,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "7bd386a4-cef4-4b6d-8af0-ccd9ece6aa46",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 72.0,
+          "label" : "odbcFactsales",
+          "y_pos" : 480.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "c515a121-81a3-4065-b257-4e76a737ce88",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "e6ef0581-aa3c-4d46-b18a-cb85669db6ae"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "bef1220d-efa3-4130-ae9f-c948e327a818"
+      } ],
+      "op" : "PxJoin",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "6d3b1e22-4529-4646-9c68-6be8a0bb01ae",
+          "type_attr" : "PRIMARY",
+          "id" : "912e984c-7e19-4281-a009-def20bfa06e2",
+          "link_name" : "state_salestotal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "state_salestotal",
+                "label" : "state_salestotal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "95f93658-36ad-475a-b5a1-a8f94eece558"
+        } ],
+        "id" : "3cb5b1a4-1555-417b-9298-dce867ff5b4e",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "c396c06e-5dbd-400d-b235-e429d89846da"
+      }, {
+        "links" : [ {
+          "node_id_ref" : "423cff2d-0fe2-4db1-8245-61b97e131b72",
+          "type_attr" : "PRIMARY",
+          "id" : "bdddd525-acd0-4fe3-84bf-88aaf366e27f",
+          "link_name" : "region",
+          "app_data" : {
+            "datastage" : {
+              "partner_link_out" : "region"
+            },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "region",
+                "label" : "region",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "735ac96f-ff56-45c1-b0b6-e8be74dfd585"
+        } ],
+        "id" : "f7eb11f9-4fdd-405b-88f3-598b2e7f7360",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 2,
+              "max" : 2147483646
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "99e4c791-731d-4131-9344-aa310c7daf89"
+      } ],
+      "id" : "70241f4f-f8b6-46fc-b17c-2ff5d35b0305",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "3cb5b1a4-1555-417b-9298-dce867ff5b4e|f7eb11f9-4fdd-405b-88f3-598b2e7f7360",
+          "outputs_order" : "c515a121-81a3-4065-b257-4e76a737ce88"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxJoin.svg",
+          "x_pos" : 552.0,
+          "label" : "jiState",
+          "y_pos" : 336.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "state"
+        } ],
+        "output_count" : 1,
+        "input_count" : 2,
+        "allow_column_mapping" : false,
+        "operator" : "innerjoin"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "735ac96f-ff56-45c1-b0b6-e8be74dfd585",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "bdddd525-acd0-4fe3-84bf-88aaf366e27f"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "99e4c791-731d-4131-9344-aa310c7daf89"
+      } ],
+      "id" : "423cff2d-0fe2-4db1-8245-61b97e131b72",
+      "type" : "super_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/flows/subflow.svg",
+          "expanded_height" : 200,
+          "is_expanded" : false,
+          "expanded_width" : 300,
+          "x_pos" : 552.0,
+          "label" : "scRegionReferenceC4",
+          "y_pos" : 144.0
+        }
+      },
+      "parameters" : {
+        "external_parameters" : {
+          "ConnProp_ODBC_hostname" : "#ConnProp_ODBC_hostname#",
+          "ConnProp_ODBC_database" : "#ConnProp_ODBC_database#",
+          "psDatabaseConnect" : "#psDatabaseConnect# ",
+          "ConnProp_ODBC_port" : "#ConnProp_ODBC_port#"
+        },
+        "output_count" : 1,
+        "input_count" : 0
+      },
+      "subflow_ref" : {
+        "name" : "scRegionReference",
+        "url" : "https://datastage-ibm-datastage-ds-nginx.dm.svc/data_intg/v3/data_intg_flows/subflows/7e023c22-74b8-4ba7-8390-5a42b5a55f09?project_id=c5e1003c-af1f-4f1c-95b4-363a0ef087f8",
+        "pipeline_id_ref" : "f9629b95-363a-452c-b604-7ba71c717ed7"
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "66effdb0-7184-4789-9f59-768918b5c10f",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "81c630b9-1607-4e9a-a6ee-f5c3ba1ef0d5"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "valueDerivation" : [ {
+            "parsedExpression" : "Sum(regionsalestotal.salestotal)",
+            "columnName" : "totalregionsales",
+            "sourceColumn" : "regionsalestotal.salestotal"
+          } ],
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "06530097-5f1f-49c9-8fda-061ac58a5e3d"
+      } ],
+      "op" : "PxAggregator",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "70241f4f-f8b6-46fc-b17c-2ff5d35b0305",
+          "type_attr" : "PRIMARY",
+          "id" : "e6ef0581-aa3c-4d46-b18a-cb85669db6ae",
+          "link_name" : "regionsalestotal",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "regionsalestotal",
+                "label" : "regionsalestotal",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "c515a121-81a3-4065-b257-4e76a737ce88"
+        } ],
+        "id" : "3f1bf830-3b20-41d2-ac90-7e8315594dc8",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "bef1220d-efa3-4130-ae9f-c948e327a818"
+      } ],
+      "id" : "153a91bb-c054-4b63-a260-4c2b9c84ac1e",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxAggregator.svg",
+          "x_pos" : 816.0,
+          "label" : "agFactsales",
+          "y_pos" : 336.0
+        }
+      },
+      "parameters" : {
+        "keyProperties" : [ {
+          "key" : "regionname"
+        }, {
+          "key" : "datekey"
+        } ],
+        "method" : "hash",
+        "selection" : "reduce",
+        "output_count" : 1,
+        "nul_res" : " ",
+        "input_count" : 1,
+        "allow_column_mapping" : false,
+        "reduceProperties" : [ [ {
+          "reduce" : "salestotal"
+        }, {
+          "sum" : "totalregionsales",
+          "decimal" : "15,2"
+        } ] ]
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "153a91bb-c054-4b63-a260-4c2b9c84ac1e",
+          "type_attr" : "PRIMARY",
+          "id" : "81c630b9-1607-4e9a-a6ee-f5c3ba1ef0d5",
+          "link_name" : "regionsalessummary",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "regionsalessummary",
+                "label" : "regionsalessummary",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "66effdb0-7184-4789-9f59-768918b5c10f"
+        } ],
+        "id" : "8633904d-28e7-4fcb-a518-0ebc2ab03074",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "datasetmode" : ">| [ds",
+          "part_type" : "same",
+          "part_coll" : "part_type",
+          "dataset" : "#psGlobal.ReportDir#/regionsalessummary.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        },
+        "schema_ref" : "06530097-5f1f-49c9-8fda-061ac58a5e3d"
+      } ],
+      "id" : "6829e881-669b-408b-bcd6-0cc21aadd1a9",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 1056.0,
+          "label" : "dsRegionsalessummaryds",
+          "y_pos" : 336.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "Prepare data for load to Region SalesSummary table",
+    "id" : "ed744567-5f83-4119-8659-758cab085226",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+    "name" : "psGlobal"
+  }, {
+    "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+    "name" : "psDatabaseConnect"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "2b438e5a-b7d0-430e-8f46-a0fe4086bcbc",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "customerkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "customerkey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dimcustomer",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "state",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "state",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dimcustomer",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "c396c06e-5dbd-400d-b235-e429d89846da",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "state.customerkey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "customerkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "customerkey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dimcustomer",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "state.state",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "state",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "state",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dimcustomer",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "salestotal.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "salestotal.salestotal",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "salestotal",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "salestotal",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "d91154fd-8d5c-4150-9f7e-509e50096e96",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "customerkey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "customerkey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "salestotal",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "salestotal",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "bef1220d-efa3-4130-ae9f-c948e327a818",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "state_salestotal.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 10,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "state_salestotal.salestotal",
+        "max_length" : 10,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "salestotal",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "salestotal",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "state_salestotal.state",
+        "max_length" : 50,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "state",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "state",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.dimcustomer",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "region.regionname",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "regionname",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "regionname",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.refusstates",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "99e4c791-731d-4131-9344-aa310c7daf89",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "state",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "statename",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.refusstates",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "regionname",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "regionname",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.refusstates",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    } ]
+  }, {
+    "id" : "06530097-5f1f-49c9-8fda-061ac58a5e3d",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "regionsalestotal.regionname",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "regionname",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "regionname",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.refusstates",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "regionsalestotal.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.factsales",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "totalregionsales",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DECIMAL",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "8eaf8d4f-dcc1-4531-9ead-0aa81dddc10c",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "datekey_start",
+      "type" : "int64",
+      "prompt" : "start date",
+      "value" : "20230101"
+    }, {
+      "name" : "datekey_end",
+      "type" : "int64",
+      "prompt" : "end date",
+      "value" : "20240831"
+    }, {
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string"
+    }, {
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : "50000"
+    }, {
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string"
+    } ]
+  }
+}

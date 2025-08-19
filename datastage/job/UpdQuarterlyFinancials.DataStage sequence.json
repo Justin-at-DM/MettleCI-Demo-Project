@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "name" : "UpdQuarterlyFinancials.DataStage sequence",
+    "asset_id" : "5753f490-0840-4857-a4d9-f0891168d136",
+    "owner_id" : "1000331036",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "a861be7c-45ad-48f3-be5a-44caaaae161e",
+      "schedule_id" : "",
+      "project_name" : "Demo Dev",
+      "configuration" : {
+        "env_type" : "orchestration_flow",
+        "env_variables" : [ ]
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "orchestration_flow",
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "UpdQuarterlyFinancials"
+    }
+  }
+}

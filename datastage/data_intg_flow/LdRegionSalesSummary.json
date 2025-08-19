@@ -1,0 +1,419 @@
+{
+  "primary_pipeline" : "6fdb582b-398d-46e0-9c28-3a09e917bd60",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "47ad3a4c-fdb5-40ee-b753-2ab7eeb47f73",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "b3f55b3e-98c0-4aba-b93f-531a8cd7b1ae"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "missingcolmode" : " ",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "dataset" : "#psGlobal.ReportDir#/regionsalessummary.ds"
+        },
+        "schema_ref" : "a3cc4a4c-7110-41a9-a0ee-3f6fb728f3e3"
+      } ],
+      "op" : "PxDataSet",
+      "id" : "db8e26d7-4f6d-44ca-bf32-e3720ac2f7e5",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 120.0,
+          "label" : "dsRegionsalessummaryds",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "88f74227-7fcf-4d1c-afa3-1a1e8392037a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "52b75d60-431c-4820-abd9-4c652c0db43a"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576
+        },
+        "schema_ref" : "1e447e41-e2d8-44d2-8195-11f81988433f"
+      } ],
+      "op" : "PxCopy",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "db8e26d7-4f6d-44ca-bf32-e3720ac2f7e5",
+          "type_attr" : "PRIMARY",
+          "id" : "b3f55b3e-98c0-4aba-b93f-531a8cd7b1ae",
+          "link_name" : "regionsalessummaryds",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "regionsalessummaryds",
+                "label" : "regionsalessummaryds",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "47ad3a4c-fdb5-40ee-b753-2ab7eeb47f73"
+        } ],
+        "id" : "33958312-5698-4623-b731-8a08f97c96ff",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "a3cc4a4c-7110-41a9-a0ee-3f6fb728f3e3"
+      } ],
+      "id" : "3d3c698e-9372-4934-b182-ddbed6466e34",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxCopy.svg",
+          "x_pos" : 336.0,
+          "label" : "cpRegionsalessummary",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 1,
+        "force" : " ",
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : -1
+            }
+          }
+        }
+      } ],
+      "op" : "ODBCConnectorPX",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "3d3c698e-9372-4934-b182-ddbed6466e34",
+          "type_attr" : "PRIMARY",
+          "id" : "52b75d60-431c-4820-abd9-4c652c0db43a",
+          "link_name" : "regionsalessummary",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "path" : "",
+                "outline" : true,
+                "hotspot" : false,
+                "id" : "regionsalessummary",
+                "label" : "regionsalessummary",
+                "position" : "middle",
+                "class_name" : ""
+              } ]
+            }
+          },
+          "port_id_ref" : "88f74227-7fcf-4d1c-afa3-1a1e8392037a"
+        } ],
+        "id" : "cebe2610-93c8-4735-83c3-dc9d1d4e5bfe",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 2147483647
+            }
+          }
+        },
+        "parameters" : {
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        },
+        "schema_ref" : "1e447e41-e2d8-44d2-8195-11f81988433f"
+      } ],
+      "connection" : {
+        "ref" : "local",
+        "properties" : {
+          "session.schema_reconciliation.fail_on_code_page_mismatch" : false,
+          "session.isolation_level" : "read_uncommitted",
+          "session.schema_reconciliation.fail_on_size_mismatch" : true,
+          "session.array_size" : 1,
+          "table_name" : "regionsalessummary",
+          "session.schema_reconciliation.drop_unmatched_fields" : true,
+          "session.autocommit_mode" : "off",
+          "session.fail_on_row_error_px" : true,
+          "logging.log_column_values" : false,
+          "write_mode" : "insert_then_update",
+          "session.schema_reconciliation.fail_on_type_mismatch" : true,
+          "dsn_type" : "DB2",
+          "password" : "#psDatabaseConnect.PASSWORD#",
+          "hostname" : "#ConnProp_ODBC_hostname#",
+          "database" : "#ConnProp_ODBC_database#",
+          "session.code_page" : "default",
+          "before_after" : false,
+          "port" : "#ConnProp_ODBC_port#",
+          "generate_sql" : true,
+          "transaction.record_count" : 2000,
+          "enable_quoted_i_ds" : false,
+          "username" : "#psDatabaseConnect.USERID#"
+        }
+      },
+      "id" : "249590cc-7ce8-4217-9b6d-a7e027721b6b",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/ODBCConnectorPX.svg",
+          "x_pos" : 576.0,
+          "label" : "odbcRegionsalessummary",
+          "y_pos" : 192.0
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "Load Region Sales Summary table on PostgreSQL",
+    "id" : "6fdb582b-398d-46e0-9c28-3a09e917bd60",
+    "app_data" : {
+      "datastage" : {
+        "runtime_column_propagation" : "false"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "5050aee1-5f83-4748-be69-4d1ae03d0594",
+    "name" : "psGlobal"
+  }, {
+    "ref" : "492842a9-df14-4da6-9b41-a0246566d5d3",
+    "name" : "psDatabaseConnect"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "a3cc4a4c-7110-41a9-a0ee-3f6fb728f3e3",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.regionsalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "regionname",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "regionname",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.regionsalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "totalregionsales",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "totalregionsales",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.regionsalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "1e447e41-e2d8-44d2-8195-11f81988433f",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "regionsalessummaryds.datekey",
+        "max_length" : 10,
+        "is_signed" : true
+      },
+      "nullable" : true,
+      "name" : "datekey",
+      "type" : "integer",
+      "app_data" : {
+        "column_reference" : "datekey",
+        "odbc_type" : "INTEGER",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.regionsalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : true,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "regionsalessummaryds.regionname",
+        "max_length" : 20,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "regionname",
+      "type" : "string",
+      "app_data" : {
+        "column_reference" : "regionname",
+        "odbc_type" : "VARCHAR",
+        "apt_field_properties" : "null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.regionsalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : true,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 15,
+        "description" : "<none>\r\nSearchable? N ",
+        "source_field_id" : "regionsalessummaryds.totalregionsales",
+        "max_length" : 15,
+        "is_signed" : false
+      },
+      "nullable" : true,
+      "name" : "totalregionsales",
+      "type" : "double",
+      "app_data" : {
+        "column_reference" : "totalregionsales",
+        "odbc_type" : "NUMERIC",
+        "apt_field_properties" : "quote=none, null_field=''",
+        "table_def" : "ODBC-postgreSQL-ww2_117.regionsalessummary",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "4e6d643b-7b4f-47d3-bed9-c78b562df47a",
+  "app_data" : {
+    "datastage" : {
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "saveChangeFrequency" : "apply_changes_temporarily"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "name" : "ConnProp_ODBC_hostname",
+      "type" : "string"
+    }, {
+      "name" : "ConnProp_ODBC_port",
+      "type" : "int64",
+      "value" : "50000"
+    }, {
+      "name" : "ConnProp_ODBC_database",
+      "type" : "string"
+    } ]
+  }
+}
