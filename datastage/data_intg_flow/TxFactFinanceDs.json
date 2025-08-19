@@ -539,9 +539,9 @@
                 "temporary" : false,
                 "label_single_line" : true,
                 "label_align" : "center",
-                "tooltip" : "factfinance",
+                "tooltip" : "factfinance_Citi",
                 "x_pos" : 0,
-                "label" : "factfinance",
+                "label" : "factfinance_Citi",
                 "label_allow_return_key" : "save",
                 "width" : 105,
                 "label_editable" : true,
@@ -553,7 +553,7 @@
               "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
             }
           },
-          "link_name" : "factfinance",
+          "link_name" : "factfinance_Citi",
           "port_id_ref" : "5cad40e9-2156-4437-89f4-4d6548a52b9e"
         } ],
         "id" : "e417351f-5f29-4aa3-9278-a5fc940fc50e",
@@ -594,7 +594,7 @@
         "allow_column_mapping" : false
       }
     } ],
-    "description" : "Short description: Prepare data for load to Finance fact table. Long description: reset instructions:\r\n\r\nset odbc stage name to odbc_Stgfinance                                                           [odbcStgfinance]\r\nset dsFactfinanceds  to Auto                                                                               [Same]\r\nset dataset path  to  /data/ww2/dataset/factfinance.ds                                     [#psGlobal.DatasetDir#/factfinance.ds#]\r\n\r\ntxProfit set profitperecentage derivation from &amp;amp;amp;amp;amp;amp;amp;amp;#39;round_inf&amp;amp;amp;amp;amp;amp;amp;amp;#39;                                      [&amp;amp;amp;amp;amp;amp;amp;amp;#39;floor&amp;amp;amp;amp;amp;amp;amp;amp;#39;]\r\n\r\n",
+    "description" : "Short description: Prepare data for load to Finance fact table. Long description: reset instructions:\r\n\r\nset odbc stage name to odbc_Stgfinance                                                           [odbcStgfinance]\r\nset dsFactfinanceds  to Auto                                                                               [Same]\r\nset dataset path  to  /data/ww2/dataset/factfinance.ds                                     [#psGlobal.DatasetDir#/factfinance.ds#]\r\n\r\ntxProfit set profitperecentage derivation from &amp;amp;amp;amp;amp;amp;amp;amp;amp;#39;round_inf&amp;amp;amp;amp;amp;amp;amp;amp;amp;#39;                                      [&amp;amp;amp;amp;amp;amp;amp;amp;amp;#39;floor&amp;amp;amp;amp;amp;amp;amp;amp;amp;#39;]\r\n\r\n",
     "id" : "361bcbd2-4efc-4e0a-943a-58ed10d48f8d",
     "app_data" : {
       "datastage" : {
